@@ -1,0 +1,13 @@
+{
+  "name": "task-management-app",
+  "version": "1.0.0",
+  "description": "Task Management Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.5.0"
+  }
+}
