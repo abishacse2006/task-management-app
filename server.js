@@ -69,11 +69,12 @@ app.post("/api/register", async (req, res) => {
 // CREATE TASK
 app.post("/api/tasks", async (req, res) => {
     try {
-        const task = {
-            title: req.body.title,
-            completed: false,
-            createdAt: new Date()
-        };
+       const task = {
+    title: req.body.title,
+    priority: req.body.priority || "Medium",
+    completed: false,
+    createdAt: new Date()
+};
 
         const result = await tasksCollection.insertOne(task);
 

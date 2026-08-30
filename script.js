@@ -60,10 +60,12 @@ async function loadTasks() {
         console.error("Error loading tasks:", error);
     }
 }
-
 async function addTask() {
     const input = document.getElementById("taskInput");
+    const priorityBox = document.getElementById("priority");
+
     const title = input.value.trim();
+    const priority = priorityBox.value;
 
     if (title === "") {
         alert("Please enter a task");
@@ -76,25 +78,35 @@ async function addTask() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ title })
+            body: JSON.stringify({
+                title: title,
+                priority: priority
+            })
         });
 
         const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.error || "Failed to add task");
+            return;
+        }
 
         displayTask(data.task);
         input.value = "";
 
     } catch (error) {
-        console.error("Error adding task:", error);
+        console.error(error);
     }
 }
-
+            
 function displayTask(task) {
     const li = document.createElement("li");
     li.className = "task";
 
     li.innerHTML = `
-        <span>${task.title}</span>
+        <span>
+    ${task.title} - ${task.priority || "Medium"}
+</span>
 
         <div>
             <button onclick="editTask('${task._id}', '${task.title}')">

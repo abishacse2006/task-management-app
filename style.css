@@ -6,73 +6,109 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    padding: 30px;
+    background: #f5f7fb;
+    padding: 25px;
 }
 
 .container {
-    max-width: 700px;
+    max-width: 850px;
     margin: auto;
     background: white;
-    padding: 25px;
-    border-radius: 12px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
-.task-form {
-    display: flex;
-    gap: 10px;
+h2 {
+    margin: 20px 0 15px;
 }
 
-#taskInput {
-    flex: 1;
+#authSection {
+    padding: 20px;
+    background: #f8f9fc;
+    border-radius: 10px;
+}
+
+input,
+select {
+    width: 100%;
     padding: 12px;
+    margin: 7px 0;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 7px;
+    font-size: 15px;
 }
 
 button {
-    padding: 12px 18px;
+    padding: 11px 16px;
+    margin: 5px;
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
     cursor: pointer;
     background: #333;
     color: white;
 }
 
+button:hover {
+    opacity: 0.85;
+}
+
+.task-form {
+    display: grid;
+    grid-template-columns: 1fr 180px auto;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
 #taskList {
     list-style: none;
-    margin-top: 25px;
 }
 
 .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    gap: 10px;
+    padding: 15px;
     margin-bottom: 10px;
-    background: #f1f1f1;
-    border-radius: 6px;
+    background: #f1f3f7;
+    border-radius: 9px;
 }
 
 .delete-btn {
     background: #d9534f;
 }
 
-@media (max-width: 600px) {
+hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+@media (max-width: 650px) {
     body {
-        padding: 15px;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 18px;
     }
 
     .task-form {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .task {
-        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task button {
+        margin-left: 0;
     }
 }

@@ -44,12 +44,20 @@
             <h2>My Tasks</h2>
 <button onclick="logoutUser()">Logout</button>
             <div class="task-form">
-                <input type="text"
-                       id="taskInput"
-                       placeholder="Enter a task">
 
-                <button onclick="addTask()">Add Task</button>
-            </div>
+    <input type="text"
+           id="taskInput"
+           placeholder="Enter a task">
+
+    <select id="priority">
+        <option value="Low">Low Priority</option>
+        <option value="Medium" selected>Medium Priority</option>
+        <option value="High">High Priority</option>
+    </select>
+
+    <button onclick="addTask()">Add Task</button>
+
+</div>
 
             <ul id="taskList"></ul>
 
