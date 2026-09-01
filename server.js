@@ -66,3 +66,64 @@ app.post("/api/contact", async (req, res) => {
 });
 
 connectDB();
+app.post("/api/register", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        if (!username || !password) {
+            return res.status(400).json({
+                error: "Username and password required"
+            });
+        }
+
+        const existingUser = await db.collection("users").findOne({ username });
+
+        if (existingUser) {
+            return res.status(400).json({
+                error: "Username already exists"
+            });
+        }
+
+        await db.collection("users").insertOne({
+            username,
+            password
+        });
+
+        res.json({
+            success: true,
+            message: "Registration successful!"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            error: "Registration failed"
+        });
+    }
+});
+
+app.post("/api/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        const user = await db.collection("users").findOne({
+            username,
+            password
+        });
+
+        if (!user) {
+            return res.status(401).json({
+                error: "Invalid username or password"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: "Login successful!"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            error: "Login failed"
+        });
+    }
+});
