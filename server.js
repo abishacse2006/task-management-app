@@ -1,1 +1,1 @@
-mongodb+srv://portfolioUers:<db_password>@cluster0.1uhanaj.mongodb.net/?appName=Cluster0
+const mongoUrl = process.env.MONGODB_URI;
